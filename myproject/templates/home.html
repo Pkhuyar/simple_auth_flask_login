@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="jumbotron text-center">
+        <h1 class="display-4">Welcome to the Flask Auth!</h1>
+
+        <hr class="my-4">
+        {% if current_user.is_authenticated %}
+        <p>Hello, {{ current_user.username }}! You are logged in.</p>
+        <a class="btn btn-primary btn-lg" href="{{ url_for('welcome_user') }}">Go to Dashboard</a>
+        {% else %}
+        <p>If you have an account, you can log in. Otherwise, register to get started!</p>
+        <a class="btn btn-success btn-lg" href="{{ url_for('login') }}">Login</a>
+        <a class="btn btn-outline-primary btn-lg" href="{{ url_for('register') }}">Register</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
